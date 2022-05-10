@@ -1,0 +1,31 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# ALIAS
+alias ls='ls -lh --color=auto' 
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias s='systemctl'
+alias j='journalctl -xe'
+
+alias setbg='sh $HOME/.local/bin/setbg'
+
+alias virtualenv='$HOME/.local/bin/virtualenv'
+alias pyinstaller.exe='$HOME/.local/bin/pyinstaller'
+
+alias reflect='sudo reflector -c GB -c IE -a 12 -p https --sort rate --save /etc/pacman.d/mirrorlist'
+
+# PS1='[\u@\h \W]\$ '
+PS1='\w  \$> '
+
+# COLORS
+#LS_COLORS=$LS_COLORS:'di=1;33:' ; export LS_COLORS
+LS_COLORS=$LS_COLORS:'fi=0;92:' ; export LS_COLORS
+LS_COLORS=$LS_COLORS:'ex=0;93:' ; export LS_COLORS
+#LS_COLORS=$LS_COLORS:'*.jpg=4;92:' ; export LS_COLORS
