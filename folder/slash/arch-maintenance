@@ -1,0 +1,31 @@
+
+#systemctl --failed :>
+	check if any errors in systemctl
+
+#journalctl -p 3 -xb :>
+	check log files for errors
+
+#pacman -Syu :>
+	updates the system [3-4 days]
+
+#pacman -Sc :>
+	deletes all cache/old packages that are still on the machine
+
+#pacman -Qtdq :>
+	checks for unwanted depedencies/orphans
+		pacman -Rns $(pacman -Qdtq) 
+		su: pacman -Qdtq | pacman -Rns
+			removes unwanted depedencies/orphans
+
+#du -sh .cache/ :>
+	.config/
+	lists the size of the file
+		rm -rf .cache/*
+			cleans up the file
+	/var/log/journal/
+		journalctl --vacuum-time=2weeks
+			keeps files that are 2weeks old
+
+#reflector -c [Country] -a 6 --sort rate --save /etc/pacman.d/mirrorlist :>
+	updates the mirrorlist to appropriate timezone/servers	
+		country, updated last 6 hours, sort by rate, save to file
