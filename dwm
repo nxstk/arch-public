@@ -1,5 +1,7 @@
 #!/bin/bash
 
+### BASE SETUP ###
+
 ## EDIT
 ##(1) root
 ##(2) pacman
@@ -21,12 +23,14 @@ echo "127.0.1.1 machine1.localdomain machine1" >> /etc/hosts
 echo root:32435 | chpasswd
 
 # PACMAN
-pacman -S grub efibootmgr mtools dosfstools base-devel linux-headers iptables-nft ipset firewalld dhclient alsa-utils pulseaudio pipewire pipewire-alsa pipewire-jack pavucontrol networkmanager nm-connection-editor network-manager-applet dialog wpa_supplicant openssh reflector
-#laptop: acpi acpi_call acpid tlp sof-firmware
-#nettools: wireless-tools iwd dhcpd bluez bluez-utils
+pacman -S grub efibootmgr sof-firmware alsa-utils pulseaudio pipewire pipewire-alsa pipewire-jack networkmanager firewalld
+#laptop: acpi acpi_call acpid tlp
+#nettools: wireless-tools iwd dhcpd bluez bluez-utils openssh reflector
+#useless stuff: mtools dosfstools linux-headers dialog wpa_supplicant
 
 grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
+grub-mkconfig -o /boot/EFI/grub_uefi/grubx64.efi
 
 # GPU
 #pacman -S xf86-video-intel
@@ -34,8 +38,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 #pacman -S nvidia nvidia-utils nvidia-settings
 
 # SYSTEMCTL
-#systemctl enable NetworkManager
-#systemctl enable firewalld
+systemctl enable NetworkManager
+systemctl enable firewalld
 #systemctl enable sshd
 #systemctl enable reflector.service
 #systemctl enable reflector.timer
@@ -50,3 +54,5 @@ grub-mkconfig -o /boot/grub/grub.cfg
 useradd -g wheel -m user1
 echo user1:21324 | chpasswd
 sed -i '85s/..//' /etc/sudoers
+
+### DWM SETUP ###
