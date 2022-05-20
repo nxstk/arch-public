@@ -1,0 +1,52 @@
+#!/bin/bash
+
+## EDIT
+##(1) root
+##(2) pacman
+##(3) gpu
+##(4) systemctl
+##(5) user
+
+ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
+hwclock --systohc
+timedatectl set-ntp true
+sed -i '178s/.//' /etc/locale.gen
+locale-gen
+echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+echo "machine1" >> /etc/hostname
+echo "127.0.0.1 localhost" >> /etc/hosts
+echo "::1       localhost" >> /etc/hosts
+echo "127.0.1.1 machine1.localdomain machine1" >> /etc/hosts
+# ROOT
+echo root:32435 | chpasswd
+
+# PACMAN
+pacman -S grub efibootmgr mtools dosfstools base-devel linux-headers iptables-nft ipset firewalld dhclient alsa-utils pulseaudio pipewire pipewire-alsa pipewire-jack pavucontrol networkmanager nm-connection-editor network-manager-applet dialog wpa_supplicant openssh reflector
+#laptop: acpi acpi_call acpid tlp sof-firmware
+#nettools: wireless-tools iwd dhcpd bluez bluez-utils
+
+grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# GPU
+#pacman -S xf86-video-intel
+#pacman -S xf86-video-amdgpu
+#pacman -S nvidia nvidia-utils nvidia-settings
+
+# SYSTEMCTL
+#systemctl enable NetworkManager
+#systemctl enable firewalld
+#systemctl enable sshd
+#systemctl enable reflector.service
+#systemctl enable reflector.timer
+#systemctl enable tlp
+#systemctl enable acpid
+#systemctl enable cups.service
+#systemctl enable avahi-daemon
+#systemctl enable fstrim.timer
+#systemctl enable bluetooth
+
+# USER
+useradd -g wheel -m user1
+echo user1:21324 | chpasswd
+sed -i '85s/..//' /etc/sudoers
