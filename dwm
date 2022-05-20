@@ -25,8 +25,8 @@ echo root:32435 | chpasswd
 # PACMAN
 pacman -S grub efibootmgr sof-firmware alsa-utils pulseaudio pipewire pipewire-alsa pipewire-jack networkmanager firewalld
 #laptop: acpi acpi_call acpid tlp
-#nettools: wireless-tools iwd dhcpd bluez bluez-utils openssh reflector
-#useless stuff: mtools dosfstools linux-headers dialog wpa_supplicant
+#net: wireless-tools iwd dhcpd bluez bluez-utils openssh reflector
+#stuff: mtools dosfstools linux-headers dialog wpa_supplicant
 
 grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
