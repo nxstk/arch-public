@@ -5,10 +5,10 @@ sudo pacman -S xorg xfce4 xfce4-screenshooter xfce4-pulseaudio-plugin xfce4-netl
 sudo systemctl enable lightdm
 
 ## TO ADD: 
-pacman browser terminal
-maybe wire/nord/vm - need groups
-move files to appropriate location from folder
-make user directory (Downloads, Media, Documents etc..) not root made
+#pacman browser terminal
+#maybe wire/nord/vm - need groups
+#move files to appropriate location from folder
+#make user directory (Downloads, Media, Documents etc..) not root made
 
 
 
