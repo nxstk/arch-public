@@ -21,9 +21,9 @@ echo "127.0.1.1 machine1.localdomain machine1" >> /etc/hosts
 echo root:32435 | chpasswd
 
 # PACMAN
-pacman -S grub efibootmgr mtools dosfstools base-devel linux-headers iptables-nft ipset firewalld dhclient alsa-utils pulseaudio pipewire pipewire-alsa pipewire-jack pavucontrol networkmanager nm-connection-editor network-manager-applet dialog wpa_supplicant openssh reflector
+pacman -S grub efibootmgr mtools dosfstools base-devel linux-headers iptables-nft ipset firewalld dhclient alsa-utils pulseaudio pipewire pipewire-alsa pipewire-jack pavucontrol networkmanager nm-connection-editor network-manager-applet dialog wpa_supplicant
 #laptop: acpi acpi_call acpid tlp sof-firmware
-#nettools: wireless-tools iwd dhcpd bluez bluez-utils
+#nettools: wireless-tools iwd dhcpd bluez bluez-utils openssh reflector
 
 grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
