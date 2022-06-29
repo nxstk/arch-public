@@ -1,2 +1,2 @@
 # ARCH INSTALLATION WITH
-#     (UEFI) & (XFCE)
+# (UEFI) & (XFCE)
