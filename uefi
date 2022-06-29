@@ -1,12 +1,20 @@
 #!/bin/bash
+### FOR USERS WHO ALREADY KNOW START UP BASICS SUCH AS:
+### partions -> file system -> mount -> pacstrap -> genfstab -> arch-chroot
+
+### ARCH SETUP ###
+printf '%s\n\n\n## STARTING ARCH ##\n\n\n'
+sleep 2
 
 ## EDIT
-##(1) root
-##(2) pacman
-##(3) gpu
-##(4) systemctl
-##(5) user
+##(1) timezone/language/localhost
+##(2) root
+##(3) pacman
+##(4) gpu
+##(5) systemctl
+##(6) user
 
+# TIMEZONE - LANGUAGE - HOST
 ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
 hwclock --systohc
 timedatectl set-ntp true
@@ -21,9 +29,9 @@ echo "127.0.1.1 machine1.localdomain machine1" >> /etc/hosts
 echo root:32435 | chpasswd
 
 # PACMAN
-pacman -S grub efibootmgr mtools dosfstools base-devel linux-headers iptables-nft ipset firewalld dhclient alsa-utils pulseaudio pipewire pipewire-alsa pipewire-jack pavucontrol networkmanager nm-connection-editor network-manager-applet dialog wpa_supplicant
-#laptop: acpi acpi_call acpid tlp sof-firmware
-#nettools: wireless-tools iwd dhcpd bluez bluez-utils openssh reflector
+pacman -S --noconfirm linux linux-firmware grub efibootmgr sof-firmware alsa-utils pulseaudio pipewire pipewire-alsa pipewire-jack networkmanager nm-connection-editor wpa_supplicant firewalld dhcpcd openssh
+#laptop: acpid tlp acpi acpi_call
+#nettools: wireless-tools iwd dhclient bluez bluez-utils reflector
 
 grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -36,6 +44,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # SYSTEMCTL
 #systemctl enable NetworkManager
 #systemctl enable firewalld
+#systemctl enable dhcpcd
 #systemctl enable sshd
 #systemctl enable reflector.service
 #systemctl enable reflector.timer
@@ -46,3 +55,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 useradd -g wheel -m user1
 echo user1:21324 | chpasswd
 sed -i '88s/..//' /etc/sudoers
+
+### SELF DELETE ###
+printf '%s\n\n\n## INSTALLATION FINISHED ##\n\n\n'
+sleep 2
