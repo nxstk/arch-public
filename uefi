@@ -49,4 +49,4 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # USER
 useradd -g wheel -m user1
 echo user1:21324 | chpasswd
-sed -i '85s/..//' /etc/sudoers
+sed -i '88s/..//' /etc/sudoers
