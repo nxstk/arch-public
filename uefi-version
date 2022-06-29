@@ -57,5 +57,12 @@ echo user1:21324 | chpasswd
 sed -i '88s/..//' /etc/sudoers
 
 ### SELF DELETE ###
-printf '%s\n\n\n## INSTALLATION FINISHED ##\n\n\n'
-sleep 2
+printf '%s\n\n\n## INSTALLATION FINISHED ##\n  ## DELETING FILE IN ##\n\n'
+printf '%s\t3..'
+sleep 1
+printf '%s2..'
+sleep 1
+printf '%s1..'
+sleep 1
+rm uefi-version
+printf '%s\n\t  DONE\n'
