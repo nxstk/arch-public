@@ -41,10 +41,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 #systemctl enable reflector.timer
 #systemctl enable tlp
 #systemctl enable acpid
-#systemctl enable cups.service
-#systemctl enable avahi-daemon
-#systemctl enable fstrim.timer
-#systemctl enable bluetooth
 
 # USER
 useradd -g wheel -m user1
