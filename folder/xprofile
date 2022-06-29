@@ -1,5 +1,0 @@
-#!/bin/sh
-
-$HOME/.local/bin/setbg $HOME/Documents/wp/scifi/
-
-reflect
