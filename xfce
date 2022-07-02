@@ -1,5 +1,9 @@
 #!/bin/bash
 
-sudo pacman -S xorg xfce4 xfce4-screenshooter xfce4-pulseaudio-plugin xfce4-netload-plugin lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings papirus-icon-theme arc-gtk-theme arc-icon-theme
+### XFCE SETUP ###
+printf '%s\n\n\n## STARTING XFCE ##\n\n\n'
+sleep 2
 
-sudo systemctl enable lightdm
+pacman -S --noconfirm  xorg xfce4 xfce4-screenshooter xfce4-pulseaudio-plugin xfce4-netload-plugin lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings papirus-icon-theme arc-gtk-theme arc-icon-theme
+
+systemctl enable lightdm
