@@ -55,6 +55,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 useradd -g wheel -m user1
 echo user1:21324 | chpasswd
 sed -i '88s/..//' /etc/sudoers
+user=user1
+mkdir /home/$user/{.dev,downloads,.config}
+chown -R $user /home/$user
+chgrp -R wheel /home/$user
 
 ### SELF DELETE ###
 printf '%s\n\n\n## INSTALLATION FINISHED ##\n  ## DELETING FILE IN ##\n\n'
