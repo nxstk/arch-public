@@ -6,6 +6,6 @@ sleep 2
 
 pacman -S --noconfirm xorg xfce4 xfce4-screenshooter ristretto xfce4-pulseaudio-plugin xfce4-netload-plugin lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings papirus-icon-theme arc-gtk-theme arc-icon-theme
 
-# others: zip unzip p7zip leafpad htop xwallpaper neofetch vivaldi
+# others: zip unzip p7zip leafpad htop xwallpaper neofetch vivaldi exfatprogs
 
 systemctl enable lightdm
