@@ -29,7 +29,7 @@ echo "127.0.1.1 machine1.localdomain machine1" >> /etc/hosts
 echo root:32435 | chpasswd
 
 # PACMAN
-pacman -S --noconfirm linux linux-firmware grub efibootmgr sof-firmware alsa-utils pulseaudio pipewire pipewire-alsa pipewire-jack networkmanager nm-connection-editor wpa_supplicant firewalld dhcpcd openssh
+pacman -S --noconfirm linux linux-firmware grub efibootmgr sof-firmware alsa-utils pulseaudio pipewire pipewire-alsa pipewire-jack networkmanager nm-connection-editor wpa_supplicant firewalld dhcpcd openssh reflector
 #laptop: acpid tlp acpi acpi_call
 #nettools: wireless-tools iwd dhclient bluez bluez-utils reflector
 
@@ -56,7 +56,7 @@ useradd -g wheel -m user1
 echo user1:21324 | chpasswd
 sed -i '88s/..//' /etc/sudoers
 user=user1
-mkdir /home/$user/{.dev,downloads,.config}
+mkdir /home/$user/{.dev,.config,downloads,files,mnts}
 chown -R $user /home/$user
 chgrp -R wheel /home/$user
 
